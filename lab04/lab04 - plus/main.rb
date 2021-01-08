@@ -8,6 +8,7 @@ class Main
   @board = Board.new
 
   loop do
+    puts " "
     puts "Limit moves of players? y/n"
     @answer = gets
     @answer = @answer.chomp
@@ -22,21 +23,38 @@ class Main
     end
   end
 
+  puts " "
+
   @players.each do |player|
     @board.pawns.push(Pawn.new(player, @moves))
   end
 
-  puts " "
-  puts "Type number of dice's walls:"
-  @number_of_walls = gets
-  @board.dice = Dice.new(@number_of_walls.chomp.to_i)
+  loop do
+    puts " "
+    puts "Use custom dice? y/n"
+    @answer = gets
+    @answer = @answer.chomp
+    if @answer == "y"
+      puts " "
+      puts "Type number of dice's walls:"
+      @number_of_walls = gets
+      @board.dice = Dice.new(@number_of_walls.chomp.to_i)
+      break
+    end
+    if @answer == "n"
+      @number_of_walls = 6
+      @board.dice = Dice.new(@number_of_walls.to_i)
+      break
+    end
+  end
+
+
 
   puts " "
   puts "Type number of turns:"
   @number_of_turns = gets
   @board.max_position = @number_of_turns.chomp.to_i
 
-  puts @board.dice.inspect
   begin
     while true
       @board.perform_turn

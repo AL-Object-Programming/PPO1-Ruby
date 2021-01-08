@@ -1,5 +1,5 @@
 class Dice
-  :number_of_walls
+  attr_accessor :number_of_walls
 
   def initialize(number_of_walls)
     @number_of_walls = number_of_walls
