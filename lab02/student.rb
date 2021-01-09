@@ -2,7 +2,7 @@ class Student
   :index
   :name
   :last_name
-  :status
+  attr_reader :status
 
   def initialize(index, name, last_name, status)
     @index = index
@@ -11,12 +11,8 @@ class Student
     @status = status
   end
 
-  def to_string
+  def show
     @last_name + ' ' + @name + ' (' + (@index.to_s) + ')'
-  end
-
-  def get_status
-    @status
   end
 
 end

@@ -6,8 +6,8 @@ Array students = []
   students.push(Student.new(rand(39000..39999), names.sample, last_names.sample, [true, false].sample))
 end
 students.each { |student|
-  if student.get_status
-    puts student.to_string
+  if student.status
+    puts student.show
   end
 }
 #
